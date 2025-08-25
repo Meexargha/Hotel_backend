@@ -91,3 +91,14 @@ npm install
   }
 ]
 ```
+## Contributing
+1. Fork the repo
+2. Create a branch (`git checkout -b feature-name`)
+3. Make your changes
+4. Commit changes (`git commit -m 'Add some feature'`)
+5. Push to the branch (`git push origin feature-name`)
+6. Create a Pull Request
+
+
+## License
+This project is licensed under the MIT License.
