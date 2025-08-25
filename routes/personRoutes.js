@@ -58,5 +58,25 @@ router.delete("/:id", async (req, res) => {
     res.status(400).json({ error: err.message });
   }
 });
+// Get staff by role
+router.get("/role/:role", async (req, res) => {
+  try {
+    const people = await Person.find({ role: req.params.role });
+    if (!people.length) return res.status(404).json({ error: "No staff found for this role" });
+    res.json(people);
+  } catch (err) {
+    res.status(400).json({ error: err.message });
+  }
+});
+// Bulk insert staff
+router.post("/bulk", async (req, res) => {
+  try {
+    const people = await Person.insertMany(req.body); // accepts array
+    res.json(people);
+  } catch (err) {
+    res.status(400).json({ error: err.message });
+  }
+});
+
 
 module.exports = router;
