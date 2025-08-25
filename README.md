@@ -100,5 +100,123 @@ npm install
 6. Create a Pull Request
 
 
-## License
-This project is licensed under the MIT License.
+# Architecture Drawing: Hotel Backend API
+
+This textual architecture drawing illustrates the main components and their interactions for the **Hotel Backend API**. This Node.js backend application leverages **Express.js** for HTTP routing and **MongoDB** as a database to efficiently manage hotel staff.
+
+---
+
+## 1. High-Level System Overview
+
+```
++---------------------+
+|    Client Apps      |
+| (Web/Mobile/Admin)  |
++----------+----------+
+           |
+           v
++---------------------+
+|   Express.js API    |
++---------------------+
+           |
+           v
++---------------------+
+|    MongoDB Atlas    |
+|   (Staff Database)  |
++---------------------+
+```
+
+---
+
+## 2. Express.js API Layer
+
+- **Routes**: `/staff`, `/staff/:id`, `/staff/bulk`, `/staff/filter`
+- **Controllers**: handle business logic for each endpoint.
+- **Middleware**: authentication, validation, error handling.
+
+---
+
+## 3. MongoDB Schema
+
+**Staff Collection (staff):**
+- `_id`
+- `name`
+- `role` (Chef, Manager, Worker, Receptionist, CEO, Chairman)
+- `contact`
+- `address`
+- `salary`
+- `dateOfJoining`
+- ... (other fields)
+
+---
+
+## 4. Endpoints
+
+| Endpoint            | Method | Description                                     |
+|---------------------|--------|-------------------------------------------------|
+| `/staff`            | POST   | Add a new staff member                          |
+| `/staff`            | GET    | List all staff members                          |
+| `/staff/:id`        | GET    | Get details of a specific staff member          |
+| `/staff/:id`        | PUT    | Update a staff member's details                 |
+| `/staff/:id`        | DELETE | Remove a staff member                           |
+| `/staff/bulk`       | POST   | Bulk add or update staff members                |
+| `/staff/filter`     | GET    | Filter staff by role, date, etc.                |
+
+---
+
+## 5. Staff Management Flow
+
+```
+(Client) --> [API Endpoint] --> (Controller) --> [MongoDB Query]
+                   ^                             |
+                   |                             v
+              (Response) <-------------------- (Data)
+```
+
+---
+
+## 6. Example Data Model (Mongoose Schema)
+
+```js
+const StaffSchema = new mongoose.Schema({
+  name: String,
+  role: { type: String, enum: ["Chef", "Manager", "Worker", "Receptionist", "CEO", "Chairman"] },
+  contact: String,
+  address: String,
+  salary: Number,
+  dateOfJoining: Date,
+  // ...other fields
+});
+```
+
+---
+
+## 7. Role-Based Filtering
+
+- The `/staff/filter` endpoint accepts query parameters like `role=Chef` to fetch only Chefs, or any other role.
+
+---
+
+## 8. Bulk Operations
+
+- `/staff/bulk` allows adding or updating multiple staff records in one request, increasing operational efficiency.
+
+---
+
+## 9. Security & Middleware
+
+- **Authentication**: Token-based (e.g., JWT)
+- **Validation**: Ensures correct data before DB operations.
+- **Error Handling**: Unified error responses.
+
+---
+
+## 10. Deployment
+
+- **Node.js** server hosted on a cloud provider (e.g., AWS, Heroku).
+- **MongoDB Atlas** for managed, scalable database storage.
+
+---
+
+**Summary:**  
+The Hotel Backend API is a modular, scalable system that supports comprehensive staff management through RESTful endpoints, robust data modeling, and secure, validated interactions.
