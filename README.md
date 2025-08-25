@@ -1,11 +1,11 @@
-# 🏨 Hotel Backend API
+#  Hotel Backend API
 
 A **Node.js backend API** for managing hotel staff, built with **Express.js** and **MongoDB**.  
 This project allows adding, retrieving, updating, deleting, bulk managing, and filtering staff members with roles such as **Chef, Manager, Worker, Receptionist, CEO, and Chairman**.
 
 ---
 
-## ⚡ Features
+##  Features
 
 - Add new staff members
 - Retrieve all staff members
@@ -19,7 +19,7 @@ This project allows adding, retrieving, updating, deleting, bulk managing, and f
 
 ---
 
-## 🛠 Tech Stack
+## Tech Stack
 
 ![Node.js](https://img.shields.io/badge/Node.js-339933?style=for-the-badge&logo=node.js&logoColor=white)
 ![Express.js](https://img.shields.io/badge/Express.js-000000?style=for-the-badge&logo=express&logoColor=white)
@@ -29,7 +29,7 @@ This project allows adding, retrieving, updating, deleting, bulk managing, and f
 
 ---
 
-## 🚀 Installation
+## Installation
 
 1. Clone the repository:
 
@@ -45,34 +45,17 @@ npm install
 
 
 
-# 📌 API Endpoints
+#  API Endpoints
 
-# Add a new staff member
-curl -X POST http://localhost:5000/api/person \
--H "Content-Type: application/json" \
--d '{"name":"Priya Singh","age":28,"role":"Receptionist","email":"priya@example.com","phone":"9876543210","department":"Front Desk"}'
-
-# Add multiple staff members (Bulk Insert)
-curl -X POST http://localhost:5000/api/person/bulk \
--H "Content-Type: application/json" \
--d '[{"name":"Rohit Sharma","age":35,"role":"Chef","email":"rohit@example.com","phone":"9876501234","department":"Kitchen"},{"name":"Anita Verma","age":30,"role":"Waiter","email":"anita@example.com","phone":"9876512345","department":"Restaurant"}]'
-
-# Get all staff members
-curl -X GET http://localhost:5000/api/person
-
-# Get a single staff member by ID
-curl -X GET http://localhost:5000/api/person/<STAFF_ID>
-
-# Filter staff by role
-curl -X GET http://localhost:5000/api/person/role/Waiter
-
-# Update staff member details
-curl -X PUT http://localhost:5000/api/person/<STAFF_ID> \
--H "Content-Type: application/json" \
--d '{"age":29,"phone":"9876543211"}'
-
-# Delete a staff member
-curl -X DELETE http://localhost:5000/api/person/<STAFF_ID>
+| Method | Endpoint                        | Description                          |
+|--------|---------------------------------|--------------------------------------|
+| POST   | /api/person                     | Add a new staff member               |
+| POST   | /api/person/bulk                | Add multiple staff members (bulk)    |
+| GET    | /api/person                     | Get all staff members                 |
+| GET    | /api/person/:id                 | Get a single staff member by ID       |
+| GET    | /api/person/role/:role          | Get staff filtered by role            |
+| PUT    | /api/person/:id                 | Update staff member details           |
+| DELETE | /api/person/:id                 | Delete a staff member                 |
 
 
 
