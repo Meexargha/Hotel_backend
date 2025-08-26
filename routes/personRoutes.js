@@ -78,5 +78,22 @@ router.post("/bulk", async (req, res) => {
   }
 });
 
+// gete staf by deaparment
+router.get("/department/:department", async (req, res) => {
+  try {
+    const people = await Person.find({ department: req.params.department });
+    if (!people.length) {
+      return res
+        .status(404)
+        .json({ error: "No staff found in this department" });
+    }
+    res.json(people);
+  } catch (err) {
+    res.status(400).json({ error: err.message });
+  }
+});
+
+
+
 
 module.exports = router;

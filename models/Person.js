@@ -16,9 +16,13 @@ const personSchema = new mongoose.Schema({
     ],
     required: true,
   },
+  department: {
+    type: String,
+    enum: ["Kitchen", "Service", "Front Desk", "Administration", "Management"],
+    required: true,
+  },
   email: { type: String, required: true, unique: true },
   phone: { type: String, required: true },
-  department: { type: String, required: true },
 });
 
 module.exports = mongoose.model("Person", personSchema);
