@@ -2,6 +2,8 @@ const express = require("express");
 const dotenv = require("dotenv");
 const connectDB = require("./config/db");
 const errorHandler = require("./middlewares/errorHandler");
+const currencyRoutes = require("./routes/currencyRoutes");
+const personRoutes = require("./routes/personRoutes");
 
 dotenv.config(); // we configed the dotenv
 connectDB(); // connect the app with mongo db 
@@ -12,8 +14,8 @@ app.use(express.json()); //miidle ware
 
 
 // Routes
-const personRoutes = require("./routes/personRoutes");
 app.use("/api/person", personRoutes);// go to  personRoutes
+app.use("/api/currency", currencyRoutes);
 
 app.get("/", (req, res) => {
   res.send("Hotel Backend API Running");
