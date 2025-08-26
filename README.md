@@ -152,16 +152,15 @@ This textual architecture drawing illustrates the main components and their inte
 
 ## 4. Endpoints
 
-| Method | Endpoint                 | Description                       |
-| ------ | ------------------------ | --------------------------------- |
-| POST   | `/api/person`            | Add a new staff member            |
-| POST   | `/api/person/bulk`       | Add multiple staff members (bulk) |
-| GET    | `/api/person`            | Get all staff members             |
-| GET    | `/api/person/:id`        | Get a single staff member by ID   |
-| GET    | `/api/person/role/:role` | Get staff filtered by role        |
-| PUT    | `/api/person/:id`        | Update staff member details       |
-| DELETE | `/api/person/:id`        | Delete a staff member             |
-
+| Endpoint            | Method | Description                                     |
+|---------------------|--------|-------------------------------------------------|
+| `/staff`            | POST   | Add a new staff member                          |
+| `/staff`            | GET    | List all staff members                          |
+| `/staff/:id`        | GET    | Get details of a specific staff member          |
+| `/staff/:id`        | PUT    | Update a staff member's details                 |
+| `/staff/:id`        | DELETE | Remove a staff member                           |
+| `/staff/bulk`       | POST   | Bulk add or update staff members                |
+| `/staff/filter`     | GET    | Filter staff by role, date, etc.                |
 
 ---
 
@@ -220,4 +219,4 @@ const StaffSchema = new mongoose.Schema({
 ---
 
 **Summary:**  
-The Hotel Backend API is a modular, scalable system that supports comprehensive staff management through RESTful endpoints, robust data modeling, and secure, validated interactions.
+The Hotel Backend API is a modular, scalable system that supports comprehensive staff management through RESTful endpoints, robust data modeling, and secure, validated interactions. update the redme file by todays code and understanding 
